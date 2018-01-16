@@ -4,6 +4,8 @@ const cookieParser = require("cookie-parser");
 
 const app = express()
 
+const port = process.env.PORT || 8080
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use('/static', express.static('public'))
@@ -28,6 +30,6 @@ app.use((err, req, res, next) => {
     res.render('error')
 })
 
-app.listen(8080, () => {
-    console.log('The application is running on localhost:8080!')
-});
+app.listen(port, () => {
+    console.log('The application is running on port: ' + port)
+})
